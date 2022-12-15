@@ -1,7 +1,16 @@
+<script setup lang="ts">
+import {useMainStore} from '~/store/store'
+const mainStore = useMainStore();
+
+const onSubmit = () => {
+  mainStore.toggleShowModal();
+}
+</script>
+
 <template>
   <div>
     <div class="flex flex-col items-center justify-center w-screen h-screen fixed top-0 left-0 bg-black opacity-75">
-      <div>
+      <div  class="modal-container">
         <div class="main-text mb-8 pb-4">
           <h1 class="text-white text-2xl font-bold ">Select Your File Type</h1>
         </div>
@@ -11,7 +20,10 @@
           <button type="submit" class="text-white button py-2 px-4">LEF file</button>  
         </div>
   
-       <button type="submit"  class="text-white button py-2 px-4 mt-4">Submit</button>  
+       <button
+        @click="onSubmit()" 
+        type="submit"  
+        class="text-white button py-2 px-4 mt-4">Submit</button>  
       </div>
 
     </div>
@@ -36,5 +48,12 @@
     transition-duration: 100ms;
     background-color: #D3D3D3;
   }
+  
+  .modal-container{
+    box-shadow: 0 0 8px 0 rgb(100 100 100 / 40%);
+    padding: 25px;
+    border-radius: 15px;
+  }
+  
 
 </style>

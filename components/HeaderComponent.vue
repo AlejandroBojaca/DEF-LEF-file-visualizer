@@ -2,11 +2,11 @@
   <div class="bg-wine flex items-center justify-between" >
     <div class="flex">
       <img src="~/static/logo.svg" class="logo"/>
-      <router-link to="index" class="text-gray font-semibold p-4 "> Home </router-link>
+      <nuxt-link to="/" class="text-gray font-semibold p-4 "> Home </nuxt-link>
     </div>
 
     <div>    
-      <router-link to="About" class="text-gray font-semibold p-4 lg-px4"> About </router-link> 
+      <nuxt-link to="About" class="text-gray font-semibold p-4 lg-px4"> About </nuxt-link> 
     </div>  
   </div>  
 </template >
