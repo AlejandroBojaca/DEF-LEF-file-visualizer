@@ -3,6 +3,11 @@
 </script>
 
 <template>
-  <HeaderComponent/>
+  <div>
+    <HeaderComponent/>
+    <h1>
+      About
+    </h1>
+  </div>
 </template>
 

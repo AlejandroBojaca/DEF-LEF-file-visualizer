@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import HeaderComponent from '~/components/HeaderComponent.vue';
+import FooterComponent from '~/components/FooterComponent.vue'
 </script>
 
 <template>
+  <div class="main">
     <HeaderComponent/>
+    <FooterComponent/>
+  </div>
 </template>
 
 <style scoped>
 .body {
-  background: rgb(93 164 224 / 100%);
+  background: rgb(121 91 131) 74%;;
+}
+
+#main {
+  height: 100vh;
 }
 
 /*
