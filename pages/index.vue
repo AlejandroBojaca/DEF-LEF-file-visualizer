@@ -7,6 +7,7 @@ import FooterComponent from '~/components/FooterComponent.vue'
   <div class="main">
     <HeaderComponent/>
     <FooterComponent/>
+    <ModalComponent/>
   </div>
 </template>
 
