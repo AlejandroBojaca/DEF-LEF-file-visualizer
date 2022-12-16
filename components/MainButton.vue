@@ -24,8 +24,16 @@ const toggleModal = () => {
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -100%);
+    border-radius: 10px;
     
     /* border-top: solid 50px rgb(85 15 145 / 100%); */
+  }
+
+  .main-button:hover{
+    transition-duration: 100ms;
+    background-color: rgb(170 48 209 / 100%);
+    color: #fff;
+    border-color: #fff;
   }
 
 </style>

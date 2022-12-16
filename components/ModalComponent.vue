@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {useMainStore} from '~/store/store'
+import { readFile } from '~/composables';
 const mainStore = useMainStore();
 
 const onSubmit = () => {
@@ -7,7 +8,12 @@ const onSubmit = () => {
 }
 
 const readFiles = (e) =>{
-  console.log(e.target.files);
+  const file = e.target.files[0]
+  const fileRead = readFile(file);
+
+  if (fileRead){
+    saveFileToStore(file);
+  }
 }
 </script>
 
