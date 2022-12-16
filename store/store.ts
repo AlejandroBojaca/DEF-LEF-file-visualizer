@@ -11,10 +11,10 @@ export const useMainStore = defineStore('main',  () => {
   }
 
   function saveFileToStore(file:any, type:string) {
-    if (type === 'DEF'){
+    if (type === 'def-file'){
       defFile.value = file;
     }
-    if (type === 'LEF'){
+    if (type === 'lef-file'){
       lefFile.value = file;
     }
   }

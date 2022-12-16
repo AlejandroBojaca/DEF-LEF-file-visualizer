@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import {useMainStore} from '~/store/store'
-import { readFile } from '~/composables';
+import { readFile, parseLEF } from '~/composables/index';
 const mainStore = useMainStore();
 
 const onSubmit = () => {
   mainStore.toggleShowModal();
 }
 
-const readFiles = (e) =>{
+const readFiles = async (e) =>{
+  const type = e.target.id;
   const file = e.target.files[0]
-  const fileRead = readFile(file);
+  const docFile = await readFile(file);
+  parseLEF(docFile);
 
-  if (fileRead){
-    saveFileToStore(file);
-  }
+  // if (docFile){
+  //   mainStore.saveFileToStore(docFile, type);
+  // }
 }
 </script>
 
@@ -25,15 +27,16 @@ const readFiles = (e) =>{
           <h1 class="text-white text-2xl font-bold ">Select Your File Type</h1>
         </div>
         <div class="flex flex-row space-x-8 w-24">
-          <input @change="readFiles" type="file" name="file" id="def-file" class="inputfile" />
-          <label for="def-file" id="left-button" class="button py-2 px-4 mt-4" >DEF file</label>
-          <input type="file" name="file" id="lef-file" class="inputfile" />
+          <input id="def-file" type="file" name="file" class="inputfile" @change="readFiles" />
+          <label id="left-button" for="def-file" class="button py-2 px-4 mt-4" >DEF file</label>
+          <input id="lef-file" type="file" name="file"  class="inputfile" @change="readFiles" />
           <label for="lef-file" class="button py-2 px-4 mt-4">LEF file</label>  
         </div>
        <button
-        @click="onSubmit()" 
         type="submit"  
-        class="text-white button py-2 px-4 mt-4">Submit</button>  
+        class="text-white button py-2 px-4 mt-4"
+        @click="onSubmit()" 
+        >Submit</button>  
       </div>
 
     </div>
@@ -43,9 +46,6 @@ const readFiles = (e) =>{
 <style scoped lang="css"> 
   .main-text{
     border-bottom: solid 1px white;
-
-    /* margin-bottom: 20px;
-    padding-bottom: 10px; */
   }
 
   .button{
