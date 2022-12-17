@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {useMainStore} from '~/store/store'
-import { readFile, parseLEF } from '~/composables/index';
+import { readFile, parseLEF, parseDEF } from '~/composables/index';
 const mainStore = useMainStore();
 
 const onSubmit = () => {
@@ -11,11 +11,19 @@ const readFiles = async (e) =>{
   const type = e.target.id;
   const file = e.target.files[0]
   const docFile = await readFile(file);
-  parseLEF(docFile);
+  let parsedFile = null;
 
-  // if (docFile){
-  //   mainStore.saveFileToStore(docFile, type);
-  // }
+  if (type === 'def-file' ){
+    parsedFile = parseDEF(docFile);
+  }
+  if (type === 'lef-file') {
+    parsedFile = parseLEF(docFile);
+  }
+
+  if (parsedFile) {
+    mainStore.saveFileToStore(parsedFile, type);
+  }
+
 }
 </script>
 
