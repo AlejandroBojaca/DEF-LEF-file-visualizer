@@ -12,7 +12,8 @@ const { showModal } = storeToRefs(mainStore);
 
 <template>
   <div class="main">
-    <HeaderComponent/>
+    <CanvasComponent/>
+    <!-- <HeaderComponent/>
     <FooterComponent/>
     <transition name="fade"> 
       <template v-if="showModal">
@@ -21,7 +22,7 @@ const { showModal } = storeToRefs(mainStore);
       <template v-else>
         <MainButton/>
       </template>
-  </transition>
+  </transition> -->
 
   </div>
 </template>

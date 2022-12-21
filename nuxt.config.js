@@ -40,5 +40,12 @@ export default {
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend (config) {    
+      config.resolve.alias['Raphaël'] = 'babel-plugin-wrap';    }  
+    },
+
+  externals: { 
+    Raphaël: 'raphael'    
+  }
 }
