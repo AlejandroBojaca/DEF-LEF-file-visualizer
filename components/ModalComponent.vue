@@ -34,17 +34,18 @@ const readFiles = async (e) =>{
         <div class="main-text mb-4 pb-2">
           <h1 class="text-white text-2xl font-bold ">Select Your File Type</h1>
         </div>
-        <div class="flex flex-row space-x-8 w-24">
+        <div class="flex flex-row space-x-8 w-24 ml-4">
           <input id="def-file" type="file" name="file" class="inputfile" @change="readFiles" />
           <label id="left-button" for="def-file" class="button py-2 px-4 mt-4" >DEF file</label>
           <input id="lef-file" type="file" name="file"  class="inputfile" @change="readFiles" />
           <label for="lef-file" class="button py-2 px-4 mt-4">LEF file</label>  
         </div>
-       <button
+        <button
         type="submit"  
-        class="text-white button py-2 px-4 mt-4"
-        @click="onSubmit()" 
-        >Submit</button>  
+        class="text-white button py-2 px-4 mt-8 ml-4"
+        >
+        <nuxt-link to="canvas" class="px-4 py-2"> Submit </nuxt-link> 
+      </button>  
       </div>
 
     </div>
