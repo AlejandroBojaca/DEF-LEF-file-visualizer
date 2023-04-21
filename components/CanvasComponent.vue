@@ -1,5 +1,5 @@
 <script setup>
-  import * as $ from 'jquery'
+  import $ from 'jquery'
   import { computed, onMounted } from 'vue'
   import { storeToRefs } from 'pinia';
   import { useMainStore } from '~/store/store'
@@ -221,95 +221,88 @@
 
 
       // for each array which contains the names of the pins and cells,
-    // we need to add them to the accordion. So we do that now.
-    // (function handleAccordionData() {
-    //     function addCheckboxesToAccordion(arr, containerName, colorType, fn) {
-    //         var keys = Object
-    //             .keys(arr)
-    //             .sort();
+      // we need to add them to the accordion. So we do that now.
+      // (function handleAccordionData() {
+      //     function addCheckboxesToAccordion(arr, containerName, colorType, fn) {
+      //         var keys = Object
+      //             .keys(arr)
+      //             .sort();
 
-    //         if (keys.length == 0) {
-    //             $('#' + containerName).parents('.panel').addClass('hidden');
-    //             return;
-    //         }
+      //         if (keys.length == 0) {
+      //             $('#' + containerName).parents('.panel').addClass('hidden');
+      //             return;
+      //         }
 
-    //         var names = keys;
-    //         if (!colorType) colorType = 'fill';
-    //         if (fn) names = names.map(fn);
+      //         var names = keys;
+      //         if (!colorType) colorType = 'fill';
+      //         if (fn) names = names.map(fn);
 
-    //         keys.forEach(function (key, index) {
-    //             // we instantiate a new entry for each item, so when
-    //             // they are hightlighted, they would have their own color.
-    //             $.rule('.highlight.' + key + ' {}').appendTo("#customStyle");
+      //         keys.forEach(function (key, index) {
+      //             // we instantiate a new entry for each item, so when
+      //             // they are hightlighted, they would have their own color.
+      //             $.rule('.highlight.' + key + ' {}').appendTo("#customStyle");
 
-    //             // we set the default color
-    //             // var color = getDefaultColorFor(key);
-    //             var color = rainbow(keys.length, index);
+      //             // we set the default color
+      //             // var color = getDefaultColorFor(key);
+      //             var color = rainbow(keys.length, index);
 
-    //             // template for the following jQuery disaster
-    //             //<div>
-    //             //    <label><input type="checkbox" value="{key}"><span> {key}</span></label>
-    //             //    <span class="picker" data-color="{color}" data-name="{key}">
-    //             //        <span class="add-on"><i></i></span>
-    //             //    </span>
-    //             //</div>
-    //             $("#types #" + containerName)
-    //                 .append($("<div />")
-    //                 .append(
-    //                     // <label><input type="checkbox" value="{key}"></label>
-    //                     $("<label />")
-    //                     .append($('<input />', {
-    //                         type: "checkbox",
-    //                         value: key
-    //                     })
+      //             // template for the following jQuery disaster
+      //             //<div>
+      //             //    <label><input type="checkbox" value="{key}"><span> {key}</span></label>
+      //             //    <span class="picker" data-color="{color}" data-name="{key}">
+      //             //        <span class="add-on"><i></i></span>
+      //             //    </span>
+      //             //</div>
+      //             $("#types #" + containerName)
+      //                 .append($("<div />")
+      //                 .append(
+      //                     // <label><input type="checkbox" value="{key}"></label>
+      //                     $("<label />")
+      //                     .append($('<input />', {
+      //                         type: "checkbox",
+      //                         value: key
+      //                     })
 
-    //                     // when the value of the checkbox changes, we want to highlight
-    //                     // or unhighlight the appropriate cells.
-    //                     .change(function () {
-    //                         var $this = $(this);
-    //                         $("." + $this.val()).toggleClass("highlight", $this.is(":checked"));
-    //                     }))
+      //                     // when the value of the checkbox changes, we want to highlight
+      //                     // or unhighlight the appropriate cells.
+      //                     .change(function () {
+      //                         var $this = $(this);
+      //                         $("." + $this.val()).toggleClass("highlight", $this.is(":checked"));
+      //                     }))
 
-    //                     // <span> {key}</span>
-    //                     .append("<span> " + names[index] + "</span>")
-    //                 )
+      //                     // <span> {key}</span>
+      //                     .append("<span> " + names[index] + "</span>")
+      //                 )
 
-    //                 //    <span class="picker" data-color="{color}" data-name="{key}">
-    //                 //        <span class="add-on"><i></i></span>
-    //                 //    </span>
-    //                 .append(
-    //                     $('<span class="picker" />')
-    //                         .attr("data-color", color)
-    //                         .attr("data-name", key)
-    //                         .attr("data-ctype", colorType)
-    //                         .append('<span class="add-on"><i></i></span>')
-    //                 )
-    //             );
-    //         });
-    //     }
+      //                 //    <span class="picker" data-color="{color}" data-name="{key}">
+      //                 //        <span class="add-on"><i></i></span>
+      //                 //    </span>
+      //                 .append(
+      //                     $('<span class="picker" />')
+      //                         .attr("data-color", color)
+      //                         .attr("data-name", key)
+      //                         .attr("data-ctype", colorType)
+      //                         .append('<span class="add-on"><i></i></span>')
+      //                 )
+      //             );
+      //         });
+      //     }
 
-    //     // We add the checkboxes in different accordions
-    //     addCheckboxesToAccordion(cellTypes, "cellsContainer");
-    //     addCheckboxesToAccordion(pinTypes, "pinsContainer");
+      //     // We add the checkboxes in different accordions
+      //     addCheckboxesToAccordion(cellTypes, "cellsContainer");
+      //     addCheckboxesToAccordion(pinTypes, "pinsContainer");
 
-    //     // the nets have different wire names than their class names.
-    //     addCheckboxesToAccordion(netsTypes, "netsContainer", 'stroke', function (a) {
-    //         return a.substring(1, a.length);
-    //     });
-    // })();
+      //     // the nets have different wire names than their class names.
+      //     addCheckboxesToAccordion(netsTypes, "netsContainer", 'stroke', function (a) {
+      //         return a.substring(1, a.length);
+      //     });
+      // })();
 
-
-
-  //uncomment to display hover names, currently breakes the site
-    //   $('[data-toggle="popover"]').popover({
-    //     container: "body",
-    //     placement: "auto",
-    //     html: true
-    // });
-
-
-
-
+      $('[data-toggle="popover"]').popover({
+        container: "body",
+        placement: "auto",
+        html: true
+      });
 
       $('.picker').each(function (index, element) {
         const $this = $(this);
@@ -350,8 +343,8 @@
       }());
 
       $('#clkTreeBtn').toggleClass('hidden', !$('.clkTree').length);
-    });
-  }
+  });
+}
 </script>
 
 
@@ -359,13 +352,6 @@
   <div id="mainContainer" class="m-10">
     <div class="container">
       <div id="canvas_container" class="col-md-10"></div>
-      <!-- <CustomTooltip/> -->
-      <!-- <div class="accordion-container">
-        <AccordionComponent />
-        <AccordionComponent />
-        <AccordionComponent />
-      </div> -->
-     
     </div>
   </div>
 </template>

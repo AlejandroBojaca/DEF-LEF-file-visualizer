@@ -15,11 +15,15 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    // Add the Bootstrap CSS
+    'bootstrap/dist/css/bootstrap.min.css',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/bootstrap-vue',
+    // '@/plugins/bootstrap-vue',
+    { src: '~/plugins/bootstrap.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,10 +46,13 @@ export default {
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
+
   build: {
     extend (config) {    
-      config.resolve.alias['Raphaël'] = 'babel-plugin-wrap';    }  
-    },
+      config.resolve.alias['Raphaël'] = 'babel-plugin-wrap';    },
+    // ...
+    transpile: [/^bootstrap/],
+  },
 
   externals: { 
     Raphaël: 'raphael'    
