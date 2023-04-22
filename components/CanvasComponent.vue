@@ -111,7 +111,7 @@
         node.setAttribute("data-content", "Layer: " + pin.layer + "<br/>Name: " + pin.name);   
 
         node.addEventListener('click', function() {
-            node.classList.toggle('highlight');           
+            node.classList.toggle('highlight2');           
         });    
         paper.text(xOff+4+pin.x , yOff-5 - pin.y , pin.name );
       });
@@ -180,6 +180,8 @@
               $node.setAttribute('tabindex', '0');
               $node.setAttribute('data-toggle', 'popover');
               $node.setAttribute('data-trigger', 'hover');
+              $node.setAttribute("data-content", cell.name); 
+              $node.setAttribute("data-content", "Type: " + cell.type + "<br/>Name: " + cell.name);
 
               let isHighlighted = false; 
               $node.addEventListener('click', function () { 
@@ -216,130 +218,11 @@
         };
       }());
 
-
-      // for each array which contains the names of the pins and cells,
-      // we need to add them to the accordion. So we do that now.
-      // (function handleAccordionData() {
-      //     function addCheckboxesToAccordion(arr, containerName, colorType, fn) {
-      //         var keys = Object
-      //             .keys(arr)
-      //             .sort();
-
-      //         if (keys.length == 0) {
-      //             $('#' + containerName).parents('.panel').addClass('hidden');
-      //             return;
-      //         }
-
-      //         var names = keys;
-      //         if (!colorType) colorType = 'fill';
-      //         if (fn) names = names.map(fn);
-
-      //         keys.forEach(function (key, index) {
-      //             // we instantiate a new entry for each item, so when
-      //             // they are hightlighted, they would have their own color.
-      //             $.rule('.highlight.' + key + ' {}').appendTo("#customStyle");
-
-      //             // we set the default color
-      //             // var color = getDefaultColorFor(key);
-      //             var color = rainbow(keys.length, index);
-
-      //             // template for the following jQuery disaster
-      //             //<div>
-      //             //    <label><input type="checkbox" value="{key}"><span> {key}</span></label>
-      //             //    <span class="picker" data-color="{color}" data-name="{key}">
-      //             //        <span class="add-on"><i></i></span>
-      //             //    </span>
-      //             //</div>
-      //             $("#types #" + containerName)
-      //                 .append($("<div />")
-      //                 .append(
-      //                     // <label><input type="checkbox" value="{key}"></label>
-      //                     $("<label />")
-      //                     .append($('<input />', {
-      //                         type: "checkbox",
-      //                         value: key
-      //                     })
-
-      //                     // when the value of the checkbox changes, we want to highlight
-      //                     // or unhighlight the appropriate cells.
-      //                     .change(function () {
-      //                         var $this = $(this);
-      //                         $("." + $this.val()).toggleClass("highlight", $this.is(":checked"));
-      //                     }))
-
-      //                     // <span> {key}</span>
-      //                     .append("<span> " + names[index] + "</span>")
-      //                 )
-
-      //                 //    <span class="picker" data-color="{color}" data-name="{key}">
-      //                 //        <span class="add-on"><i></i></span>
-      //                 //    </span>
-      //                 .append(
-      //                     $('<span class="picker" />')
-      //                         .attr("data-color", color)
-      //                         .attr("data-name", key)
-      //                         .attr("data-ctype", colorType)
-      //                         .append('<span class="add-on"><i></i></span>')
-      //                 )
-      //             );
-      //         });
-      //     }
-
-      //     // We add the checkboxes in different accordions
-      //     addCheckboxesToAccordion(cellTypes, "cellsContainer");
-      //     addCheckboxesToAccordion(pinTypes, "pinsContainer");
-
-      //     // the nets have different wire names than their class names.
-      //     addCheckboxesToAccordion(netsTypes, "netsContainer", 'stroke', function (a) {
-      //         return a.substring(1, a.length);
-      //     });
-      // })();
-
       $('[data-toggle="popover"]').popover({
         container: "body",
         placement: "auto",
         html: true
       });
-
-      $('.picker').each(function (index, element) {
-        const $this = $(this);
-
-        $this
-            .colorpicker()
-            // event to change CSS on color change.
-            .on("changeColor", function (e) {
-                $.rule('.highlight.' + $this.data("name"), '#customStyle').css($this.data("ctype"), e.color);
-            })
-
-            .colorpicker('setValue', $this.data("color"));
-      });
-
-      $(document).on("click", "#clearBtn", function () {
-        $('#types input[type="checkbox"]:checked').prop("checked", false);
-        $("#canvas_container .hidden:not('.pdn')").toggleClass("hidden", false);
-        $("#canvas_container .highlight").toggleClass("highlight", false);
-      });
-
-      $(document).on('click', "#clkTreeBtn", function () {
-        let flag = false;
-
-        return function () {
-            flag = !flag;
-            $(this).children('span').html(flag ? 'Hide' : 'Show');
-            $('.clkTree').toggleClass('highlight', flag);
-        };
-      }());
-
-      $(document).on('click', '#pdnBtn', function () {
-        let flag = false;
-
-        return function () {
-            flag = !flag;
-            $('.pdn').toggleClass('hidden', flag);
-        };
-      }());
-
-      $('#clkTreeBtn').toggleClass('hidden', !$('.clkTree').length);
   });
 }
 </script>
@@ -355,100 +238,107 @@
 
 
 <style>
-.accordion-container {
-  position: absolute;
-  right: 3rem;
-  top: 6rem;
-}
-
-#svg-canvas{
-    overflow: inherit;
-}
-
-#types {
-    float: right;
-    position: relative;
-    border: 1px dashed;
-}
-
-#types div label span {
-    vertical-align: text-bottom;
-}
-
-.container {
-    margin-left: 15vw;
-}
-
-.main-container {
-  height: 125vh;
-}
-
-#buttons {
-    text-align: center;
-    width: 100%;
-    border: none;
-}
-
-.panel-title > a:hover {
-    text-decoration: none;
-}
-
-.cells, .pins {
-    fill: lightgray;
-}
-
-.picker {
-    float: right;
-}
-
-.hidden {
-    visibility: hidden;
-}
-
-.die {
-    stroke-width: 1;
-    stroke: blue;
-    stroke-dasharray: 3,1;
-}
-
-.pdn {
-    stroke-width: 2;
-}
-
-.modal {
-    text-align: center;
-    padding: 0 !important;
-}
-
-.modal-dialog {
-    display: inline-block;
-    text-align: left;
-    vertical-align: middle;
-}
-
-.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-file input[type=file] {
+  .accordion-container {
     position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
+    right: 3rem;
+    top: 6rem;
+  }
 
-    /*
-    filter: alpha(opacity=0);
-    */
+  #svg-canvas{
+      overflow: inherit;
+  }
 
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
+  #types {
+      float: right;
+      position: relative;
+      border: 1px dashed;
+  }
 
+  #types div label span {
+      vertical-align: text-bottom;
+  }
+
+  .container {
+      margin-left: 15vw;
+  }
+
+  .main-container {
+    height: 125vh;
+  }
+
+  #buttons {
+      text-align: center;
+      width: 100%;
+      border: none;
+  }
+
+  .panel-title > a:hover {
+      text-decoration: none;
+  }
+
+  .cells, .pins {
+      fill: lightgray;
+  }
+
+  .picker {
+      float: right;
+  }
+
+  .hidden {
+      visibility: hidden;
+  }
+
+  .die {
+      stroke-width: 1;
+      stroke: blue;
+      stroke-dasharray: 3,1;
+  }
+
+  .pdn {
+      stroke-width: 2;
+  }
+
+  .modal {
+      text-align: center;
+      padding: 0 !important;
+  }
+
+  .modal-dialog {
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle;
+  }
+
+  .btn-file {
+      position: relative;
+      overflow: hidden;
+  }
+
+  .btn-file input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+
+      /*
+      filter: alpha(opacity=0);
+      */
+
+      opacity: 0;
+      outline: none;
+      background: white;
+      cursor: inherit;
+      display: block;
+  }
+
+  .highlight {
+    fill: antiquewhite;
+  }
+
+  .highlight2 {
+    fill: aquamarine;
+  }
 </style>
