@@ -14,9 +14,9 @@ import { storeToRefs } from 'pinia';
     <h1 class="text-xl font-bold px-10 my-10">
       CANVAS
     </h1>
-    <template v-if="defLefFiles.defData === null">
+    <div  v-if="defLefFiles.defData === null" class="ml-12">
       EMPTY
-    </template>
+    </div>
     <template v-else>
       <CanvasComponent/>
     </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-wine flex items-center justify-between" >
+  <div class="bg-wine header flex items-center justify-between" >
     <div class="flex">
       <img src="~/static/logo.svg" class="logo"/>
       <nuxt-link to="/" class="text-gray font-semibold p-4 "> Home </nuxt-link>
@@ -23,9 +23,14 @@
       border: none;        
   }  
 
+  .header {
+    z-index: 10;
+  }
+
   .logo{
     height: 40px;
     padding-left: 0.5rem;
+    margin-top: 1rem;
   }
 
   .text-gray {     

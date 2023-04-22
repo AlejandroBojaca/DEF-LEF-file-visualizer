@@ -4,7 +4,7 @@
   import HeaderComponent from '~/components/HeaderComponent.vue';
   import FooterComponent from '~/components/FooterComponent.vue'
   import ModalComponent from '~/components/ModalComponent.vue'
-  import MainButton from '~/components/MainButton.vue'
+  import mainPage from '~/components/MainPage.vue'
 
   const mainStore = useMainStore();
   const { showModal } = storeToRefs(mainStore); 
@@ -19,7 +19,7 @@
           <ModalComponent/>
       </template>
       <template v-else>
-        <MainButton/>
+        <mainPage/>
       </template>
   </transition>
 

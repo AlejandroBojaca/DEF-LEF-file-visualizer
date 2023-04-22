@@ -3,9 +3,6 @@
   import { computed, onMounted } from 'vue'
   import { storeToRefs } from 'pinia';
   import { useMainStore } from '~/store/store'
-  //uncomment to display hover names, currently breakes the site
-  // import 'bootstrap/dist/css/bootstrap.min.css';
-  // import 'bootstrap/dist/js/bootstrap.bundle.min';
 
   const mainStore = useMainStore();
   const { defLefFiles } = storeToRefs(mainStore); 
@@ -349,7 +346,7 @@
 
 
 <template>
-  <div id="mainContainer" class="m-10">
+  <div id="mainContainer" class="m-10 main-container">
     <div class="container">
       <div id="canvas_container" class="col-md-10"></div>
     </div>
@@ -378,6 +375,13 @@
     vertical-align: text-bottom;
 }
 
+.container {
+    margin-left: 15vw;
+}
+
+.main-container {
+  height: 125vh;
+}
 
 #buttons {
     text-align: center;
