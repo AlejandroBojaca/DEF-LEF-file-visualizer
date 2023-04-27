@@ -4,16 +4,12 @@ import { storeToRefs } from 'pinia';
   
   const mainStore = useMainStore();
   const { defLefFiles } = storeToRefs(mainStore); 
-  console.log(defLefFiles.value)
 </script>
 
 <template>
   <div>
     <HeaderComponent/>
     <FooterComponent/>
-    <h1 class="text-xl font-bold px-10 my-10">
-      CANVAS
-    </h1>
     <div  v-if="defLefFiles.defData === null" class="ml-12">
       EMPTY
     </div>

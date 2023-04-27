@@ -230,6 +230,9 @@
 
 <template>
   <div id="mainContainer" class="m-10 main-container">
+    <h1 class="text-xl font-bold px-10 my-10">
+    CANVAS {{defViewer.defData.cellName[0]}}
+    </h1>
     <div class="container">
       <div id="canvas_container" class="col-md-10"></div>
     </div>
