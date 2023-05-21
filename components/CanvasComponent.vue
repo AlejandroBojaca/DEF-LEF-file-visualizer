@@ -297,6 +297,27 @@
       stroke-dasharray: 3,1;
   }
 
+  .lmetal1 {
+      stroke-width: 1;
+      stroke: transparent;
+  }
+
+  .lmetal2 {
+      stroke-width: 1;
+      stroke: darkgreen;
+      stroke-dasharray: 4;
+  }
+
+  .lmetal3 {
+      stroke-width: 1;
+      stroke: orangered;
+  }
+
+  .lmetal4 {
+      stroke-width: 1;
+      stroke: darkblue;
+  }
+
   .pdn {
       stroke-width: 2;
   }
