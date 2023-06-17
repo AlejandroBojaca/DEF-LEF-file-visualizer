@@ -1,4 +1,4 @@
-<template>  
+<template>
     <div class="accordion ">
         <div class="flex items-center cursor-pointer" @click="expanded = !expanded">
             <div class="px-4 py-2 bg-gray-800 text-white font-bold tracking-widest text-sm">Parent Button</div>
@@ -14,17 +14,16 @@
             </div>
         </transition>
     </div>  
-</template> 
- 
+</template>
  
 <script>
-export default {
-    data() {
-        return {
-            expanded: false
+    export default {
+        data() {
+            return {
+                expanded: false
+            }
         }
     }
-}
 </script>
  
 <style>

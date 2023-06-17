@@ -9,7 +9,7 @@
       <nuxt-link to="About" class="text-gray font-semibold p-4 lg-px4"> About </nuxt-link> 
     </div>  
   </div>  
-</template >
+</template>
 
  
 <script lang="ts">
