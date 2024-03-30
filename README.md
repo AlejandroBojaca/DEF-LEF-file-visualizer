@@ -1,5 +1,30 @@
 # def-visualizer
 
+This project is a web application built using Vue.js Compositional CLI that parses DEF (Design Exchange Format) and LEF (Library Exchange Format) files and generates a circuit representation using RaphaelJS on a canvas.
+
+What are DEF and LEF files?
+
+DEF and LEF files are industry-standard file formats used in the semiconductor industry for integrated circuit (IC) design and physical implementation. These files contain essential information about the design layout, cell libraries, and physical constraints.
+
+    DEF (Design Exchange Format) files describe the physical layout of an IC design, including the placement of components (cells), pins, and interconnections (nets).
+    LEF (Library Exchange Format) files define the physical and electrical properties of standard cell libraries used in the IC design process. They provide details about cell dimensions, pin locations, and other parameters.
+
+By parsing and interpreting these files, designers can visualize and analyze the circuit layout, enabling efficient design exploration, verification, and optimization.
+
+Circuit Representation
+
+This application takes DEF and LEF files as input and uses regular expressions to parse their content. The parsed data is then utilized to generate a visual representation of the circuit layout on an HTML canvas using the RaphaelJS library.
+
+The circuit representation displays various components, such as standard cells, pins, and interconnections, based on the information extracted from the DEF and LEF files. This visual representation aids in understanding the circuit design, identifying potential issues, and facilitating communication among design teams.
+
+Key Features
+
+    Parse and interpret DEF and LEF files using regular expressions
+    Generate a circuit representation on an HTML canvas using RaphaelJS
+    Visualize standard cells, pins, and interconnections
+    Explore and analyze the circuit layout interactively
+
+
 ## Build Setup
 
 ```bash
