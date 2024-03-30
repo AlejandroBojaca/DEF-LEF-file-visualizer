@@ -1,4 +1,4 @@
-# def-visualizer
+# DEF-visualizer
 
 This project is a web application built using Vue.js Compositional CLI that parses DEF (Design Exchange Format) and LEF (Library Exchange Format) files and generates a circuit representation using RaphaelJS on a canvas.
 
